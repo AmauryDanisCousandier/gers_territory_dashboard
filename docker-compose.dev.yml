@@ -1,0 +1,9 @@
+services:
+  front:
+    build:
+      context: ./
+      dockerfile: Dockerfile.dev
+    ports:
+      - "19006:19006"
+    volumes:
+      - ./:/app
