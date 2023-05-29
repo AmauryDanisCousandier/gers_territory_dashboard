@@ -1,17 +1,31 @@
 import * as React from 'react';
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Image, Center, Box } from 'native-base';
+import { Image, Center, Box, useBreakpointValue, Switch, Stack, ScrollView } from 'native-base';
+import { useNavigation } from '@react-navigation/native';
+
 
 export default function GroundwaterMapView() {
+	const navigation = useNavigation();
+	const screenSize = useBreakpointValue({ base: "small", md: "big" });
+	const isMobileView = screenSize == "small";
+
 	return (
-		<SafeAreaView style={{ flex: 1 }}>
-			<Box flex={1} justifyContent="center" alignItems="center">
+		<SafeAreaView>
+			<ScrollView>
+			<Box flexDirection={isMobileView ? 'column' : 'row'} justifyContent='space-evenly' alignItems="center">
+				<Stack space={4}>
+					<Switch/>
+					<Switch/>
+					<Switch/>
+				</Stack>
 				<Image
-					size={900}
+					alt='gers-map-scale'
+					size={[420, 850]}
 					resizeMode="contain"
 					source={require('../assets/gers-map-scale.png')}
 				/>
 			</Box>
+			</ScrollView>
 		</SafeAreaView>
 	);
 }
