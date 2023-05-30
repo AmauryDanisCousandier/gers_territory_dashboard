@@ -5,7 +5,6 @@ import { useNavigation } from '@react-navigation/native';
 
 
 export default function SettingsView() {
-	const navigation = useNavigation();
 
 	return (
 		<SafeAreaView>
